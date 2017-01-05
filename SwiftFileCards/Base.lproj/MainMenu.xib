@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1212" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -11,12 +13,24 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target">
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="SwiftFileCards" customModuleProvider="target">
             <connections>
+                <outlet property="pageController" destination="xad-nw-GZ7" id="0gL-ME-R8B"/>
+                <outlet property="tableView" destination="T8X-tG-l76" id="ep6-Rb-t4H"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <pagecontroller transitionStyle="stackBook" id="xad-nw-GZ7">
+            <connections>
+                <outlet property="view" destination="4Wu-NL-6Kg" id="HGf-J0-2E6"/>
+            </connections>
+        </pagecontroller>
+        <arrayController editable="NO" id="HHZ-8G-kIe" userLabel="Back">
+            <connections>
+                <binding destination="xad-nw-GZ7" name="contentArray" keyPath="self.arrangedObjects" id="zv0-3p-4Nj"/>
+            </connections>
+        </arrayController>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="SwiftFileCards" id="1Xt-HY-uBw">
@@ -682,11 +696,146 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esm-07-Nyh">
+                        <rect key="frame" x="-1" y="-1" width="149" height="362"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <clipView key="contentView" ambiguous="YES" id="01H-tG-6T0">
+                            <rect key="frame" x="1" y="0.0" width="147" height="361"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="ILX-T8-5sz" id="T8X-tG-l76">
+                                    <rect key="frame" x="0.0" y="0.0" width="147" height="338"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <size key="intercellSpacing" width="3" height="2"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                    <tableColumns>
+                                        <tableColumn width="144" minWidth="40" maxWidth="1000" id="fHD-ZE-eds">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Files">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" alignment="left" title="Text Cell" drawsBackground="YES" usesSingleLineMode="YES" id="hUd-du-GHP">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <connections>
+                                                <binding destination="HHZ-8G-kIe" name="value" keyPath="arrangedObjects.name" id="2u9-XO-Mbd">
+                                                    <dictionary key="options">
+                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </tableColumn>
+                                    </tableColumns>
+                                    <connections>
+                                        <binding destination="HHZ-8G-kIe" name="content" keyPath="arrangedObjects" id="g1q-F5-Fhs"/>
+                                        <binding destination="HHZ-8G-kIe" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="g1q-F5-Fhs" id="Vx9-el-EKl"/>
+                                        <outlet property="delegate" destination="Voe-Tx-rLC" id="tiw-99-WAf"/>
+                                    </connections>
+                                </tableView>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="1g8-xo-rOy">
+                            <rect key="frame" x="1" y="-16" width="0.0" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="2Wf-hU-gTM">
+                            <rect key="frame" x="-15" y="0.0" width="16" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <tableHeaderView key="headerView" id="ILX-T8-5sz">
+                            <rect key="frame" x="0.0" y="0.0" width="147" height="23"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </tableHeaderView>
+                    </scrollView>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Wu-NL-6Kg">
+                        <rect key="frame" x="147" y="-1" width="333" height="361"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                </subviews>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="AAB7EA78-B24A-4FAA-9779-C2A59053A10C" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="W2P-bx-6eH">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="F307E790-51B0-4BBC-960C-35995DDE7425" label="Transition Style" paletteLabel="Transition Style" id="K9v-04-GUT" userLabel="Transition Style">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="100" height="26"/>
+                        <size key="maxSize" width="100" height="26"/>
+                        <popUpButton key="view" verticalHuggingPriority="750" id="neI-We-waw">
+                            <rect key="frame" x="0.0" y="14" width="100" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButtonCell key="cell" type="roundTextured" title="Book" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="BkL-3I-6Hd" id="kLn-Fs-wFD">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="2ol-Xh-b0R">
+                                    <items>
+                                        <menuItem title="History" id="07F-4e-e6F" userLabel="History"/>
+                                        <menuItem title="Book" state="on" id="BkL-3I-6Hd" userLabel="Book"/>
+                                        <menuItem title="Strip" id="rrA-zu-riy" userLabel="Strip"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="takeTransitionStyleFrom:" target="Voe-Tx-rLC" id="fry-ib-byc"/>
+                            </connections>
+                        </popUpButton>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="6EBF74BF-4F98-4A45-8634-E7AEACA28A21" label="Back" paletteLabel="Back" id="9fK-Wh-3ou" userLabel="Back">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="82" height="32"/>
+                        <size key="maxSize" width="82" height="32"/>
+                        <button key="view" verticalHuggingPriority="750" id="RIa-Zf-mXe">
+                            <rect key="frame" x="0.0" y="14" width="82" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="&lt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sRZ-h2-dus">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="navigateBack:" target="xad-nw-GZ7" id="lPf-w5-Rdi"/>
+                            </connections>
+                        </button>
+                        <connections>
+                            <binding destination="HHZ-8G-kIe" name="enabled" keyPath="canSelectPrevious" id="Rar-RL-BKb"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="412D2DE4-0007-4046-AE12-B25D6E398704" label="Forward" paletteLabel="Forward" id="IcM-6Z-3fg" userLabel="Forward">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="82" height="32"/>
+                        <size key="maxSize" width="82" height="32"/>
+                        <button key="view" verticalHuggingPriority="750" id="Sml-cw-OZc">
+                            <rect key="frame" x="0.0" y="14" width="82" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="&gt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cfO-j7-C7A">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="navigateForward:" target="xad-nw-GZ7" id="b9n-l7-UQ5"/>
+                            </connections>
+                        </button>
+                        <connections>
+                            <binding destination="HHZ-8G-kIe" name="enabled" keyPath="canSelectNext" id="xxX-av-Q4A"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="zO1-T7-J7B"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="qTw-aN-KbM"/>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="9fK-Wh-3ou"/>
+                    <toolbarItem reference="IcM-6Z-3fg"/>
+                    <toolbarItem reference="qTw-aN-KbM"/>
+                    <toolbarItem reference="K9v-04-GUT"/>
+                </defaultToolbarItems>
+            </toolbar>
         </window>
     </objects>
 </document>

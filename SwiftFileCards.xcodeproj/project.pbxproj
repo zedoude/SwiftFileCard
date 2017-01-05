@@ -10,6 +10,9 @@
 		82E6E9221E1E3AB100E18AD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E6E9211E1E3AB100E18AD3 /* AppDelegate.swift */; };
 		82E6E9241E1E3AB100E18AD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E6E9231E1E3AB100E18AD3 /* Assets.xcassets */; };
 		82E6E9271E1E3AB100E18AD3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E6E9251E1E3AB100E18AD3 /* MainMenu.xib */; };
+		82E6E9301E1E440300E18AD3 /* ImageCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E6E92F1E1E440300E18AD3 /* ImageCard.xib */; };
+		82E6E9321E1E496300E18AD3 /* FileCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E6E9311E1E496300E18AD3 /* FileCard.xib */; };
+		82E6E9341E1E4ABB00E18AD3 /* FileObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E6E9331E1E4ABB00E18AD3 /* FileObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +21,9 @@
 		82E6E9231E1E3AB100E18AD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82E6E9261E1E3AB100E18AD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		82E6E9281E1E3AB100E18AD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82E6E92F1E1E440300E18AD3 /* ImageCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCard.xib; sourceTree = "<group>"; };
+		82E6E9311E1E496300E18AD3 /* FileCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileCard.xib; sourceTree = "<group>"; };
+		82E6E9331E1E4ABB00E18AD3 /* FileObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,12 +56,23 @@
 		82E6E9201E1E3AB100E18AD3 /* SwiftFileCards */ = {
 			isa = PBXGroup;
 			children = (
+				82E6E92E1E1E3B3E00E18AD3 /* Ressources */,
 				82E6E9211E1E3AB100E18AD3 /* AppDelegate.swift */,
+				82E6E9331E1E4ABB00E18AD3 /* FileObject.swift */,
 				82E6E9231E1E3AB100E18AD3 /* Assets.xcassets */,
-				82E6E9251E1E3AB100E18AD3 /* MainMenu.xib */,
 				82E6E9281E1E3AB100E18AD3 /* Info.plist */,
 			);
 			path = SwiftFileCards;
+			sourceTree = "<group>";
+		};
+		82E6E92E1E1E3B3E00E18AD3 /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				82E6E9251E1E3AB100E18AD3 /* MainMenu.xib */,
+				82E6E92F1E1E440300E18AD3 /* ImageCard.xib */,
+				82E6E9311E1E496300E18AD3 /* FileCard.xib */,
+			);
+			name = Ressources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -117,8 +134,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82E6E9301E1E440300E18AD3 /* ImageCard.xib in Resources */,
 				82E6E9241E1E3AB100E18AD3 /* Assets.xcassets in Resources */,
 				82E6E9271E1E3AB100E18AD3 /* MainMenu.xib in Resources */,
+				82E6E9321E1E496300E18AD3 /* FileCard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82E6E9341E1E4ABB00E18AD3 /* FileObject.swift in Sources */,
 				82E6E9221E1E3AB100E18AD3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
