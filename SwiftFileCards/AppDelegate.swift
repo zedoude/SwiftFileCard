@@ -20,9 +20,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPageControllerDelegate, NS
         let dirURL = try! FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: false)
         
         // load all the file card URLs by enumerating through the user's Document folder
-//        var data : [FileObject] = []
         self.pageController.delegate = self
-        let enumerator = FileManager.default.enumerator(at: dirURL, includingPropertiesForKeys: [.localizedNameKey, .effectiveIconKey, .isDirectoryKey, .typeIdentifierKey, .isRegularFileKey], options: [.skipsHiddenFiles, .skipsPackageDescendants, .skipsSubdirectoryDescendants], errorHandler: nil)!
+        let enumerator = FileManager.default.enumerator(at: dirURL,
+                                                        includingPropertiesForKeys: [.localizedNameKey,
+                                                                                     .effectiveIconKey,
+                                                                                     .isDirectoryKey,
+                                                                                     .typeIdentifierKey,
+                                                                                     .isRegularFileKey],
+                                                        options: [.skipsHiddenFiles,
+                                                                  .skipsPackageDescendants,
+                                                                  .skipsSubdirectoryDescendants],
+                                                        errorHandler: nil)!
         for case let u as URL in enumerator
         {
             guard let resourceValues = try? u.resourceValues(forKeys: [.localizedNameKey,
@@ -41,7 +49,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPageControllerDelegate, NS
         
         // set the first card in our list
         if self.pageController.arrangedObjects.count > 0 {
-//            self.pageController.arrangedObjects = data
             self.tableView.selectRowIndexes( IndexSet(integer: 0), byExtendingSelection: false)
         }
     }
